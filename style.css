@@ -1,0 +1,184 @@
+body {
+    background: linear-gradient(135deg, #e0e7ff 0%, #f0fff4 100%);
+    font-family: 'Segoe UI', Arial, sans-serif, 'Noto Sans Hebrew', 'Arial Hebrew', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    direction: rtl;
+}
+
+.card {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(44, 62, 80, 0.12);
+    padding: 2.5rem 2.5rem 2rem 2.5rem;
+    max-width: 420px;
+    width: 100%;
+    text-align: right;
+    position: relative;
+    overflow: hidden;
+}
+
+.photo-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.2rem;
+}
+
+.profile-photo {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #38bdf8;
+    margin-bottom: 0;
+    background: #e0e7ff;
+    box-shadow: 0 2px 8px rgba(56,189,248,0.10);
+}
+
+.card h1 {
+    margin-top: 0;
+    color: #2563eb;
+    font-size: 2.1rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+    font-family: inherit;
+}
+
+.card p {
+    color: #334155;
+    margin: 1rem 0 1.5rem 0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.contact-info {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+    text-align: right;
+}
+
+.contact-info li {
+    margin-bottom: 0.7rem;
+    color: #2d3a4b;
+    font-size: 1.05rem;
+}
+
+a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.main-btn {
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    margin: 0.7rem auto 0.7rem auto;
+    padding: 0.9rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    box-shadow: 0 2px 8px rgba(56,189,248,0.10);
+}
+
+#contactBtn.main-btn {
+    background: linear-gradient(90deg, #38bdf8 0%, #2563eb 100%);
+    color: #fff;
+}
+
+#contactBtn.main-btn:hover {
+    background: linear-gradient(90deg, #2563eb 0%, #38bdf8 100%);
+    transform: translateY(-2px) scale(1.03);
+}
+
+.whatsapp-link.main-btn {
+    background: linear-gradient(90deg, #25d366 0%, #38bdf8 100%);
+    color: #fff;
+    font-weight: 700;
+    position: relative;
+}
+
+.whatsapp-link.main-btn::before {
+    content: '';
+    display: inline-block;
+    width: 1.3em;
+    height: 1.3em;
+    background: url('https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg') no-repeat center/contain;
+    vertical-align: middle;
+    margin-left: 0.5em;
+    margin-right: 0;
+}
+
+.whatsapp-link.main-btn:hover {
+    background: linear-gradient(90deg, #38bdf8 0%, #25d366 100%);
+    text-decoration: none;
+    transform: translateY(-2px) scale(1.03);
+}
+
+.center-title {
+    text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .card {
+        padding: 1.2rem 0.5rem;
+        max-width: 98vw;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    .profile-photo {
+        width: 80px;
+        height: 80px;
+    }
+    .main-btn {
+        font-size: 1rem;
+        padding: 0.7rem 1rem;
+    }
+    /* }
+        align-items: center;
+        gap: 0.4em;
+    } */
+
+.faq-item p {
+    margin: 0;
+    color: #334155;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .card {
+        padding: 1.2rem 0.5rem;
+        max-width: 98vw;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    .faq {
+        padding: 1rem 0.2rem;
+    }
+    .profile-photo {
+        width: 80px;
+        height: 80px;
+    }
+    #contactBtn {
+        font-size: 1rem;
+        padding: 0.7rem 1rem;
+    }
+}
