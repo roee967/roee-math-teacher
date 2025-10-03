@@ -113,7 +113,8 @@ a:hover {
     position: relative;
 }
 
-.whatsapp-link.main-btn .wa-icon {
+.whatsapp-link.main-btn::before {
+    content: '';
     display: inline-block;
     width: 1.3em;
     height: 1.3em;
@@ -170,7 +171,7 @@ a:hover {
 .details-section {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1);
+    transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1), padding 0.2s;
     background: #f8fafc;
     border-radius: 10px;
     padding: 0 1rem;
@@ -181,17 +182,13 @@ a:hover {
 }
 
 .details-section.open {
+    /* Fully flexible height, never clipped */
+    max-height: none !important;
+    height: auto !important;
+    overflow: visible !important;
     padding: 1rem 1rem;
-    max-height: 400px;
-}
-
-.details-text {
-    color: #334155;
-    font-size: 1.05rem;
-    line-height: 1.7;
-    white-space: pre-line;
-    text-align: right;
-    direction: rtl;
+    margin-bottom: 1rem;
+    transition: padding 0.2s;
 }
 
 /* Ensure the details section fills the card width and is aligned */
@@ -217,7 +214,10 @@ a:hover {
 }
 
 .card .details-section.open {
-    max-height: 400px;
+    /* Remove fixed max-height for open state */
+    max-height: none !important;
+    height: auto !important;
+    overflow: visible !important;
     padding: 1rem 1rem;
 }
 
@@ -262,20 +262,6 @@ a:hover {
     direction: rtl;
 }
 
-.save-contact-btn {
-    background: linear-gradient(90deg, #38bdf8 0%, #06b6d4 100%);
-    color: #fff;
-    font-weight: 700;
-    margin-top: 0.3rem;
-    margin-bottom: 0.3rem;
-}
-
-.save-contact-btn:hover {
-    background: linear-gradient(90deg, #06b6d4 0%, #38bdf8 100%);
-    text-decoration: none;
-    transform: translateY(-2px) scale(1.03);
-}
-
 /* Responsive */
 @media (max-width: 600px) {
     .card {
@@ -292,6 +278,16 @@ a:hover {
         font-size: 1rem;
         padding: 0.7rem 1rem;
     }
+
+    .details-section.open,
+    .card .details-section.open {
+        max-height: none !important;
+        height: auto !important;
+        overflow: visible !important;
+        padding: 1rem 1rem;
+        margin-bottom: 1rem;
+    }
+
     /* }
         align-items: center;
         gap: 0.4em;
@@ -309,5 +305,12 @@ a:hover {
         margin-top: 0.4rem !important;
     }
 }
+    .profile-photo {
+        width: 80px;
+        height: 80px;
+    }
+    #contactBtn {
+        font-size: 1rem;
+        padding: 0.7rem 1rem;
     }
 }
