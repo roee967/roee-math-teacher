@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>מורה פרטי למתמטיקה - כרטיס ביקור</title>
+    <title>רועי דורנפלד - מתמטיקה בדרך שלך</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -56,12 +56,30 @@
         </section>
 
         <div style="margin-top:1.2rem;">
-            <button class="collapse-btn" id="toggleDetailsBtn" aria-expanded="false">
+            <button class="collapse-btn" id="toggleDetailsBtn1" aria-expanded="false">
+                <span class="arrow">&#9660;</span>
+                כמה זה עולה?
+            </button>
+            <div class="details-section" id="detailsSection1">
+                <div class="details-text" id="detailsText1">
+                    <!-- Loaded text will appear here -->
+                </div>
+            </div>
+            <button class="collapse-btn" id="toggleDetailsBtn2" aria-expanded="false">
                 <span class="arrow">&#9660;</span>
                 פרטים נוספים
             </button>
-            <div class="details-section" id="detailsSection">
-                <div class="details-text" id="detailsText">
+            <div class="details-section" id="detailsSection2">
+                <div class="details-text" id="detailsText2">
+                    <!-- Loaded text will appear here -->
+                </div>
+            </div>
+            <button class="collapse-btn" id="toggleDetailsBtn3" aria-expanded="false">
+                <span class="arrow">&#9660;</span>
+                קצת עליי
+            </button>
+            <div class="details-section" id="detailsSection3">
+                <div class="details-text" id="detailsText3">
                     <!-- Loaded text will appear here -->
                 </div>
             </div>
@@ -70,23 +88,29 @@
     <script src="script.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const btn = document.getElementById('toggleDetailsBtn');
-        const section = document.getElementById('detailsSection');
-        const textContainer = document.getElementById('detailsText');
-        let loaded = false;
-
-        btn.addEventListener('click', function() {
-            const expanded = btn.getAttribute('aria-expanded') === 'true';
-            btn.setAttribute('aria-expanded', !expanded);
-            section.classList.toggle('open');
-            if (!loaded && !expanded) {
-                fetch('details.txt')
-                    .then(res => res.text())
-                    .then(text => {
-                        textContainer.textContent = text;
-                        loaded = true;
-                    });
-            }
+        const sections = [
+            {btn: 'toggleDetailsBtn1', section: 'detailsSection1', text: 'detailsText1', file: 'price.txt'},
+            {btn: 'toggleDetailsBtn2', section: 'detailsSection2', text: 'detailsText2', file: 'details.txt'},
+            {btn: 'toggleDetailsBtn3', section: 'detailsSection3', text: 'detailsText3', file: 'about.txt'}
+        ];
+        sections.forEach(({btn, section, text, file}) => {
+            let loaded = false;
+            const btnEl = document.getElementById(btn);
+            const sectionEl = document.getElementById(section);
+            const textEl = document.getElementById(text);
+            btnEl.addEventListener('click', function() {
+                const expanded = btnEl.getAttribute('aria-expanded') === 'true';
+                btnEl.setAttribute('aria-expanded', !expanded);
+                sectionEl.classList.toggle('open');
+                if (!loaded && !expanded) {
+                    fetch(file)
+                        .then(res => res.text())
+                        .then(txt => {
+                            textEl.textContent = txt;
+                            loaded = true;
+                        });
+                }
+            });
         });
     });
     </script>
