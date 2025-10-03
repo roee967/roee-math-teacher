@@ -29,11 +29,7 @@
         <a id="whatsappBtn" class="main-btn whatsapp-link" href="https://wa.me/972546881363" target="_blank" rel="noopener">
             שלח הודעה בוואטסאפ
         </a>
-    </main>
-    <script src="script.js"></script>
-</body>
-</html>
-</html>
+
         <!-- FAQ Section -->
         <section class="faq">
             <h2 id="faq-title"></h2> <!-- faq_title.txt -->
@@ -58,14 +54,41 @@
                 <p id="faq-a5"></p>
             </div>
         </section>
-    </main>
-    <script src="script.js"></script>
-</body>
-</html>
-                </p>
+
+        <div style="margin-top:1.2rem;">
+            <button class="collapse-btn" id="toggleDetailsBtn" aria-expanded="false">
+                <span class="arrow">&#9660;</span>
+                פרטים נוספים
+            </button>
+            <div class="details-section" id="detailsSection">
+                <div class="details-text" id="detailsText">
+                    <!-- Loaded text will appear here -->
+                </div>
             </div>
-        </section>
+        </div>
     </main>
     <script src="script.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const btn = document.getElementById('toggleDetailsBtn');
+        const section = document.getElementById('detailsSection');
+        const textContainer = document.getElementById('detailsText');
+        let loaded = false;
+
+        btn.addEventListener('click', function() {
+            const expanded = btn.getAttribute('aria-expanded') === 'true';
+            btn.setAttribute('aria-expanded', !expanded);
+            section.classList.toggle('open');
+            if (!loaded && !expanded) {
+                fetch('details.txt')
+                    .then(res => res.text())
+                    .then(text => {
+                        textContainer.textContent = text;
+                        loaded = true;
+                    });
+            }
+        });
+    });
+    </script>
 </body>
 </html>

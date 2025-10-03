@@ -30,11 +30,11 @@ body {
 }
 
 .profile-photo {
-    width: 110px;
-    height: 110px;
+    width: 120px;
+    height: 120px;
     object-fit: cover;
     border-radius: 50%;
-    border: 4px solid #38bdf8;
+    border: 2px solid #33ade1;
     margin-bottom: 0;
     background: #e0e7ff;
     box-shadow: 0 2px 8px rgba(56,189,248,0.10);
@@ -132,6 +132,135 @@ a:hover {
 
 .center-title {
     text-align: center;
+}
+
+/* Collapse/Expand Button */
+.collapse-btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background: none;
+    border: none;
+    color: #2563eb;
+    font-size: 1.08rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+    margin-right: 0;
+    transition: color 0.2s;
+    padding: 0.3em 0.2em;
+    outline: none;
+}
+
+.collapse-btn:hover {
+    color: #38bdf8;
+}
+
+.collapse-btn .arrow {
+    display: inline-block;
+    margin-right: 0em;
+    transition: transform 0.2s;
+    font-size: 1.2em;
+}
+
+.collapse-btn[aria-expanded="true"] .arrow {
+    transform: rotate(180deg);
+}
+
+/* Collapsible Details Section */
+.details-section {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1);
+    background: #f8fafc;
+    border-radius: 10px;
+    padding: 0 1rem;
+    margin-bottom: 1rem;
+    text-align: right;
+    direction: rtl;
+    box-shadow: 0 1px 4px rgba(56,189,248,0.06);
+}
+
+.details-section.open {
+    padding: 1rem 1rem;
+    max-height: 400px;
+}
+
+.details-text {
+    color: #334155;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    white-space: pre-line;
+    text-align: right;
+    direction: rtl;
+}
+
+/* Ensure the details section fills the card width and is aligned */
+.card .details-section,
+.card .details-section.open {
+    width: 100%;
+    box-sizing: border-box;
+    margin-right: 0;
+    /* margin-left: 0; */
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    background: #f8fafc;
+    text-align: right;
+    direction: rtl;
+    box-shadow: 0 1px 4px rgba(56,189,248,0.06);
+    transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1), padding 0.2s;
+}
+
+.card .details-section {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 1rem;
+}
+
+.card .details-section.open {
+    max-height: 400px;
+    padding: 1rem 1rem;
+}
+
+.card .collapse-btn {
+    display: flex;
+    justify-content: flex-end;
+    background: none;
+    border: none;
+    color: #2563eb;
+    font-size: 1.08rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+    transition: color 0.2s;
+    padding: 0.3em 0.2em;
+    outline: none;
+    text-align: right;
+    align-self: flex-end; /* Ensure alignment in flex parent */
+}
+
+.card .collapse-btn:hover {
+    color: #38bdf8;
+}
+
+.card .collapse-btn .arrow {
+    display: inline-block;
+    margin-right: 0.5em;
+    transition: transform 0.2s;
+    font-size: 1.2em;
+}
+
+.card .collapse-btn[aria-expanded="true"] .arrow {
+    transform: rotate(180deg);
+}
+
+.card .details-text {
+    color: #334155;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    white-space: pre-line;
+    text-align: right;
+    direction: rtl;
 }
 
 /* Responsive */
